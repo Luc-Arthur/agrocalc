@@ -1,24 +1,18 @@
 <script setup lang="ts">
 import Logo from './components/Logo.vue'
-import { calculateurs } from './calculateurs'
+import ThemeToggle from './components/ThemeToggle.vue'
 </script>
 
 <template>
-  <div class="flex min-h-dvh flex-col">
-    <header class="border-b border-line bg-ground/90 backdrop-blur sticky top-0 z-10">
-      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-3 px-4 py-3 sm:px-6">
+  <div class="page-grid flex min-h-dvh flex-col">
+    <header class="sticky top-0 z-10 border-b-2 border-ink bg-paper">
+      <div class="mx-auto flex h-16 max-w-[1440px] items-center gap-3 px-4 lg:h-[72px] lg:px-12">
         <Logo />
-        <nav aria-label="Calculateurs" class="-mx-1 flex gap-1 overflow-x-auto">
-          <RouterLink
-            v-for="c in calculateurs"
-            :key="c.slug"
-            :to="`/${c.slug}`"
-            class="whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium text-muted transition hover:bg-white hover:text-soil focus-visible:outline-2 focus-visible:outline-field"
-            active-class="!bg-field !text-white"
-          >
-            {{ c.titre }}
-          </RouterLink>
+        <nav aria-label="Navigation principale" class="mr-7 hidden gap-7 text-base font-bold sm:flex">
+          <RouterLink to="/" class="border-b-2 border-transparent py-1.5" exact-active-class="!border-ink">Calculateurs</RouterLink>
+          <a href="https://github.com/Luc-Arthur/agrocalc" class="border-b-2 border-transparent py-1.5 hover:border-ink">GitHub</a>
         </nav>
+        <ThemeToggle />
       </div>
     </header>
 
@@ -26,13 +20,13 @@ import { calculateurs } from './calculateurs'
       <RouterView />
     </main>
 
-    <footer class="border-t border-line">
-      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-6 text-sm text-muted sm:px-6">
+    <footer class="border-t-2 border-ink bg-paper">
+      <div class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-3 px-4 py-5 text-sm text-ink-2 lg:px-12">
         <p>
-          Conçu par <a href="https://www.linkedin.com/in/luc-arthur-lawale-00a489334" class="font-medium text-soil underline decoration-wheat decoration-2 underline-offset-4">Luc-Arthur Lawale</a>,
-          étudiant en agronomie à l'UFSM.
+          Projet étudiant · Agronomie UFSM · par
+          <a href="https://www.linkedin.com/in/luc-arthur-lawale-00a489334" class="font-bold text-pencil underline decoration-2 underline-offset-[3px]">Luc-Arthur Lawale</a>
         </p>
-        <a href="https://github.com/Luc-Arthur/agrocalc" class="font-mono text-xs hover:text-soil">github.com/Luc-Arthur/agrocalc</a>
+        <a href="https://github.com/Luc-Arthur/agrocalc" class="mono text-[13px] hover:text-ink">github.com/Luc-Arthur/agrocalc</a>
       </div>
     </footer>
   </div>

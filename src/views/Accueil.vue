@@ -1,46 +1,63 @@
 <script setup lang="ts">
 import { calculateurs } from '../calculateurs'
+
+const etapes = [
+  { titre: 'Entrez vos valeurs', texte: 'Les unités sont déjà dans les champs.' },
+  { titre: 'Lisez le résultat', texte: 'Il se met à jour à chaque saisie.' },
+  { titre: 'Vérifiez la formule', texte: 'Chaque calcul est détaillé, chiffres compris.' },
+]
 </script>
 
 <template>
-  <section class="grid-paper border-b border-line">
-    <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-      <p class="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-        Santa Maria (RS) · 29°43′ S · 53°43′ O
-      </p>
-      <h1 class="mt-4 max-w-3xl font-display text-5xl font-black leading-[0.95] tracking-tight [font-stretch:110%] sm:text-7xl">
-        Les calculs du terrain,
-        <span class="text-field">sans tableur.</span>
+  <div class="mx-auto grid max-w-[1440px] gap-5 px-4 pb-8 pt-4 lg:grid-cols-[5fr_7fr] lg:items-start lg:gap-12 lg:px-12 lg:pt-[72px] lg:pb-12">
+    <!-- Accroche -->
+    <section class="pt-4 lg:pt-0">
+      <p class="kicker">Calculateurs agronomiques · FR / PT</p>
+      <h1 class="mt-2.5 text-4xl font-bold leading-10 tracking-tight lg:mt-[18px] lg:text-[64px] lg:leading-[64px] lg:tracking-[-0.02em]">
+        Le calcul de terrain, <span class="highlight">sans tableur.</span>
       </h1>
-      <p class="mt-6 max-w-xl text-lg text-muted">
-        Semis, chaulage, fumure et conversions d'unités : entrez vos valeurs, le résultat s'affiche
-        tout de suite, avec la formule utilisée.
+      <p class="mt-3 text-lg leading-[27px] text-ink-2 lg:mt-6 lg:max-w-[30ch] lg:text-xl lg:leading-[30px]">
+        Entrez vos valeurs : le résultat s'affiche aussitôt, avec la formule utilisée et une explication courte.
       </p>
-    </div>
-  </section>
+    </section>
 
-  <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-    <h2 class="sr-only">Calculateurs</h2>
-    <ul class="grid gap-4 sm:grid-cols-2">
-      <li v-for="c in calculateurs" :key="c.slug">
-        <RouterLink
-          :to="`/${c.slug}`"
-          class="group flex h-full flex-col rounded-xl border border-line bg-white p-6 transition hover:border-field focus-visible:outline-2 focus-visible:outline-field"
-        >
-          <div class="flex items-start justify-between gap-4">
-            <h3 class="font-display text-2xl font-extrabold tracking-tight [font-stretch:105%]">{{ c.titre }}</h3>
-            <span class="shrink-0 rounded bg-ground px-2 py-1 font-mono text-xs text-field">{{ c.unite }}</span>
-          </div>
-          <p class="mt-3 text-muted">{{ c.description }}</p>
-          <p class="mt-auto pt-6 text-sm font-medium">
-            <span v-if="c.disponible" class="text-field group-hover:underline">Ouvrir le calculateur →</span>
-            <span v-else class="inline-flex items-center gap-2 text-muted">
-              <span class="size-2 rounded-full bg-wheat" aria-hidden="true"></span>
-              En construction
-            </span>
-          </p>
+    <!-- Mobile : liste façon carnet -->
+    <ul class="panel lg:hidden">
+      <li v-for="c in calculateurs" :key="c.slug" class="[&+li]:border-t-2 [&+li]:border-ink">
+        <RouterLink :to="`/${c.slug}`" class="grid min-h-[92px] grid-cols-[44px_1fr_auto] items-center gap-3.5 px-4 py-3.5 hover:bg-paper-2">
+          <span class="idx">{{ c.index }}</span>
+          <span>
+            <span class="block text-[22px] font-bold leading-7">{{ c.titre }}</span>
+            <span class="mt-0.5 block text-[15px] leading-5 text-ink-2">{{ c.description }}</span>
+          </span>
+          <span class="flex flex-col items-end gap-2">
+            <span class="unit-chip">{{ c.unite }}</span>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" /></svg>
+          </span>
         </RouterLink>
       </li>
     </ul>
-  </section>
+
+    <!-- Desktop : quatre cartes, avec la formule de chacune -->
+    <div class="hidden grid-cols-2 gap-0.5 border-2 border-ink bg-ink lg:grid">
+      <RouterLink v-for="c in calculateurs" :key="c.slug" :to="`/${c.slug}`" class="flex min-h-[236px] flex-col gap-2.5 bg-paper p-6 hover:bg-paper-2">
+        <span class="flex items-center justify-between">
+          <span class="idx">{{ c.index }}</span>
+          <span class="unit-chip">{{ c.unite }}</span>
+        </span>
+        <span class="mt-2 text-[28px] font-bold leading-8">{{ c.titre }}</span>
+        <span class="text-base text-ink-2">{{ c.description }}</span>
+        <span class="formula-line mt-auto">{{ c.formule }}</span>
+      </RouterLink>
+    </div>
+
+    <!-- Comment ça marche (desktop) -->
+    <div class="col-span-full hidden grid-cols-3 gap-6 border-t-2 border-ink pt-6 lg:grid">
+      <div v-for="(e, i) in etapes" :key="e.titre">
+        <span class="kicker">{{ i + 1 }}</span>
+        <b class="mt-1.5 block text-lg">{{ e.titre }}</b>
+        <p class="mt-1 text-base text-ink-2">{{ e.texte }}</p>
+      </div>
+    </div>
+  </div>
 </template>

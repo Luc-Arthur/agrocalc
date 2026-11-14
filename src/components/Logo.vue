@@ -1,10 +1,11 @@
 <template>
-  <RouterLink to="/" class="flex items-center gap-2.5" aria-label="AgroCalc, accueil">
-    <svg viewBox="0 0 32 32" class="size-8" aria-hidden="true">
-      <rect width="32" height="32" rx="7" fill="#1F4D3A" />
-      <path d="M16 26V12" stroke="#E9B949" stroke-width="2.4" stroke-linecap="round" />
-      <path d="M16 17c-4.5 0-7-2.6-7-7 4.5 0 7 2.6 7 7Zm0-3c4.5 0 7-2.6 7-7-4.5 0-7 2.6-7 7Z" fill="#E9B949" />
+  <RouterLink to="/" class="mr-auto flex items-center gap-2.5 text-xl font-bold tracking-tight" aria-label="AgroCalc, accueil">
+    <!-- Une cellule de quadrillage, dont un carreau est surligné -->
+    <svg viewBox="0 0 26 26" class="size-[26px] flex-none" aria-hidden="true">
+      <rect x="13" y="13" width="12" height="12" fill="var(--marker)" />
+      <rect x="1" y="1" width="24" height="24" fill="none" stroke="var(--ink)" stroke-width="2" />
+      <path d="M13 1v24M1 13h24" fill="none" stroke="var(--ink)" stroke-width="2" />
     </svg>
-    <span class="font-display text-xl font-extrabold tracking-tight [font-stretch:115%]">AgroCalc</span>
+    <span>AgroCalc</span>
   </RouterLink>
 </template>

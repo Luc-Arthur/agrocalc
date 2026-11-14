@@ -1,39 +1,49 @@
-// Liste des calculateurs de l'application (utilisée par le menu et l'accueil)
+// Liste des calculateurs : utilisée par le menu, l'accueil et les pages
 export interface Calculateur {
   slug: string
+  index: string
   titre: string
   description: string
   unite: string
+  formule: string
   disponible: boolean
 }
 
 export const calculateurs: Calculateur[] = [
   {
     slug: 'semis',
+    index: '01',
     titre: 'Semis',
-    description: 'Quantité de semences à prévoir selon la densité visée, le poids de mille grains et la germination.',
+    description: 'kg de semences par hectare',
     unite: 'kg/ha',
+    formule: 'kg/ha = (pl/ha × PMG) ÷ (10⁶ × G × P)',
     disponible: false,
   },
   {
     slug: 'chaulage',
+    index: '02',
     titre: 'Chaulage',
-    description: 'Besoin en calcaire par la méthode de saturation par bases, corrigé par le PRNT du produit.',
+    description: 't de calcaire par hectare · saturation par bases',
     unite: 't/ha',
+    formule: 'NC = (V₂ − V₁) × CTC ÷ PRNT',
     disponible: false,
   },
   {
     slug: 'fumure',
+    index: '03',
     titre: 'Fumure NPK',
-    description: "Quantité d'engrais commercial (ex. 04-14-08) pour couvrir les besoins de la culture.",
+    description: "kg d'engrais commercial par hectare, ex. 04-14-08",
     unite: 'kg/ha',
+    formule: 'kg/ha = besoin (kg/ha) × 100 ÷ teneur (%)',
     disponible: false,
   },
   {
     slug: 'conversions',
+    index: '04',
     titre: 'Conversions',
-    description: 'Hectare, mètre carré, alqueire, sacs par hectare : passez d’une unité à l’autre.',
-    unite: 'ha ⇄ alq',
+    description: 'hectare, m², alqueire, sacs par hectare',
+    unite: 'ha ⇄ m²',
+    formule: '1 ha = 10 000 m² · 1 sc = 60 kg',
     disponible: false,
   },
 ]

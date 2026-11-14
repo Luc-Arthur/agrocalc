@@ -1,40 +1,139 @@
 @import "tailwindcss";
 
-/* Palette « carnet de terrain » : vert culture, terre, blé */
-@theme {
-  --color-field: #1f4d3a;
-  --color-field-dark: #163a2b;
-  --color-leaf: #5e8c31;
-  --color-wheat: #e9b949;
-  --color-soil: #2b2118;
-  --color-ground: #eef1ea;
-  --color-line: #d5dccd;
-  --color-muted: #5b6658;
+/*
+  AgroCalc — direction « Caderneta » (le carnet de terrain)
+  Encre presque noire sur papier blanc, chiffres à chasse fixe,
+  et un seul trait de surligneur jaune sur le chiffre qui compte.
+*/
 
-  --font-display: "Archivo", "Arial Narrow", sans-serif;
-  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+:root {
+  --paper: #ffffff;
+  --paper-2: #f2f5f8;
+  --grid: #e3eaf0;
+  --ink: #0b1726;
+  --ink-2: #44546a;
+  --line: #5b6b80;
+  --marker: #ffe14d;
+  --on-marker: #0b1726;
+  --pencil: #1d4ed8;
+  --danger: #b42318;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c1219;
+    --paper-2: #141c27;
+    --grid: #18222f;
+    --ink: #eef3f8;
+    --ink-2: #a9b6c6;
+    --line: #7f90a6;
+    --pencil: #8ab4ff;
+    --danger: #ff8a80;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0c1219;
+  --paper-2: #141c27;
+  --grid: #18222f;
+  --ink: #eef3f8;
+  --ink-2: #a9b6c6;
+  --line: #7f90a6;
+  --pencil: #8ab4ff;
+  --danger: #ff8a80;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-grid: var(--grid);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-marker: var(--marker);
+  --color-on-marker: var(--on-marker);
+  --color-pencil: var(--pencil);
+  --color-danger: var(--danger);
+  --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
-html {
-  background: var(--color-ground);
-  color: var(--color-soil);
+@layer base {
+  html {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  :focus-visible { outline: 3px solid var(--pencil); outline-offset: 2px; }
 }
 
-body {
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-}
+@layer components {
+  /* Quadrillage du carnet : uniquement en fond de page */
+  .page-grid {
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+  }
 
-/* Quadrillage léger, comme une feuille de carnet de terrain */
-.grid-paper {
-  background-image:
-    linear-gradient(var(--color-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
-  background-size: 28px 28px;
-  background-position: -1px -1px;
-}
+  .icon {
+    width: 22px; height: 22px; flex: none;
+    fill: none; stroke: currentColor; stroke-width: 2;
+    stroke-linecap: square; stroke-linejoin: miter;
+  }
 
-h1, h2, h3 {
-  text-wrap: balance;
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+  .kicker {
+    font-family: var(--font-mono); font-size: 13px; line-height: 16px; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+  }
+
+  /* Le surligneur : réservé au chiffre (ou à la phrase) qui compte */
+  .highlight {
+    background: var(--marker); color: var(--on-marker);
+    padding: 0 .12em; border-radius: 3px;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+
+  .panel { background: var(--paper); border: 2px solid var(--ink); }
+
+  .icon-btn {
+    display: grid; place-items: center; width: 48px; height: 48px;
+    border: 2px solid var(--ink); border-radius: 4px; background: var(--paper); cursor: pointer;
+  }
+
+  /* Numéro d'index, comme l'onglet d'un carnet */
+  .idx {
+    display: grid; place-items: center; width: 44px; height: 44px; flex: none;
+    border: 2px solid currentColor;
+    font-family: var(--font-mono); font-size: 15px; font-weight: 600;
+  }
+
+  .unit-chip {
+    font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+    padding: 3px 7px; border: 1.5px solid var(--ink); white-space: nowrap;
+  }
+
+  .formula-line {
+    font-family: var(--font-mono); font-size: 14px; line-height: 20px; color: var(--ink-2);
+    padding-top: 12px; border-top: 1.5px dashed var(--line); overflow-wrap: anywhere;
+  }
+
+  .note {
+    display: flex; gap: 10px; padding: 14px 16px;
+    border: 1.5px dashed var(--line); background: var(--paper);
+    font-size: 14px; line-height: 20px; color: var(--ink-2);
+  }
 }
