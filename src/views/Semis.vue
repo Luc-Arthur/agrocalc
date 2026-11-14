@@ -75,23 +75,23 @@ async function partager() {
 
 <template>
   <div
-    class="mx-auto grid max-w-[1440px] gap-5 px-4 pb-8 pt-4 lg:grid-cols-[248px_minmax(0,1fr)_minmax(0,472px)] lg:items-start lg:gap-10 lg:px-12 lg:pb-12 lg:pt-8"
+    class="mx-auto grid max-w-[1440px] grid-cols-1 gap-5 px-4 pb-8 pt-4 lg:grid-cols-[248px_minmax(0,1fr)_minmax(0,472px)] lg:items-start lg:gap-10 lg:px-12 lg:pb-12 lg:pt-8"
   >
     <ListeCalculateurs />
 
     <div class="contents lg:grid lg:min-w-0 lg:gap-7">
-      <EnTete index="01" titre="Semis" sous-titre="Densité de semis, en kg de semences par hectare" class="order-1" />
+      <EnTete index="01" titre="Semis" sous-titre="Densité de semis, en kg de semences par hectare" class="order-1 lg:order-none" />
 
       <!-- Vos données -->
       <section class="order-3 lg:order-none" aria-labelledby="titre-donnees">
         <h2 id="titre-donnees" class="kicker mb-3">Vos données</h2>
-        <div class="grid gap-[18px] lg:grid-cols-2 lg:gap-x-6 lg:gap-y-5">
+        <div class="grid grid-cols-1 gap-[18px] lg:grid-cols-2 lg:gap-x-6 lg:gap-y-5">
           <div class="lg:col-span-2">
             <label for="culture" class="mb-2 flex justify-between text-[15px] font-bold leading-5">
               <span>Culture</span><span class="font-normal text-ink-2">remplit des valeurs typiques</span>
             </label>
             <div class="relative flex h-16 items-center rounded border-2 border-line bg-paper focus-within:border-ink focus-within:outline-3 focus-within:outline-offset-2 focus-within:outline-pencil">
-              <select id="culture" v-model="culture" class="h-full w-full appearance-none bg-transparent pl-4 pr-14 text-[22px] font-bold outline-none" @change="choisirCulture">
+              <select id="culture" v-model="culture" class="h-full w-full min-w-0 appearance-none bg-transparent pl-4 pr-14 text-[22px] font-bold outline-none" @change="choisirCulture">
                 <option v-for="(c, cle) in cultures" :key="cle" :value="cle">{{ c.nom }}</option>
               </select>
               <svg class="icon pointer-events-none absolute right-4" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>

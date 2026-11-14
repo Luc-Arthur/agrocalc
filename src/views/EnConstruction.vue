@@ -10,7 +10,7 @@ const calculateur = computed(() => calculateurs.find((c) => c.slug === props.slu
 </script>
 
 <template>
-  <div class="mx-auto grid max-w-[1440px] gap-5 px-4 pb-8 pt-4 lg:grid-cols-[248px_minmax(0,1fr)] lg:items-start lg:gap-10 lg:px-12 lg:pt-8 lg:pb-12">
+  <div class="mx-auto grid max-w-[1440px] grid-cols-1 gap-5 px-4 pb-8 pt-4 lg:grid-cols-[248px_minmax(0,1fr)] lg:items-start lg:gap-10 lg:px-12 lg:pt-8 lg:pb-12">
     <ListeCalculateurs />
 
     <div class="grid gap-5 lg:gap-7">
