@@ -17,7 +17,7 @@ export const calculateurs: Calculateur[] = [
     description: 'kg de semences par hectare',
     unite: 'kg/ha',
     formule: 'kg/ha = (pl/ha × PMG) ÷ (10⁶ × G × P)',
-    disponible: false,
+    disponible: true,
   },
   {
     slug: 'chaulage',

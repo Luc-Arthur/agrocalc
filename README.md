@@ -11,7 +11,7 @@ Calculateurs agronomiques en ligne : **semis, chaulage, fumure NPK et conversion
 ## 🗺️ Feuille de route
 
 - [x] Structure de l'application et mise en ligne automatique sur GitHub Pages
-- [ ] Semis : kg de semences par hectare
+- [x] Semis : kg de semences par hectare, graines par mètre de rang
 - [ ] Chaulage : t de calcaire par hectare (saturation par bases)
 - [ ] Fumure NPK : kg d'engrais commercial par hectare
 - [ ] Conversions : hectare, m², alqueire, sacs par hectare
@@ -20,7 +20,7 @@ Calculateurs agronomiques en ligne : **semis, chaulage, fumure NPK et conversion
 
 ## 🛠️ Stack
 
-Vue 3 (Composition API) · TypeScript · Vue Router · Tailwind CSS 4 · Vite · GitHub Actions + GitHub Pages
+Vue 3 (Composition API) · TypeScript · Vue Router · Tailwind CSS 4 · Vite · Vitest · GitHub Actions + GitHub Pages
 
 ## 🚀 Lancer en local
 
@@ -29,6 +29,7 @@ git clone https://github.com/Luc-Arthur/agrocalc.git
 cd agrocalc
 npm install
 npm run dev
+npm test   # tests des formules
 ```
 
 ## ⚠️ Avertissement

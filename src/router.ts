@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Accueil from './views/Accueil.vue'
 import EnConstruction from './views/EnConstruction.vue'
+import Semis from './views/Semis.vue'
 import { calculateurs } from './calculateurs'
 
 // Historique « hash » (#/semis) : compatible avec GitHub Pages, sans configuration serveur
@@ -8,7 +9,10 @@ export const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     { path: '/', name: 'accueil', component: Accueil },
-    ...calculateurs.map((c) => ({
+    { path: '/semis', name: 'semis', component: Semis },
+    ...calculateurs
+      .filter((c) => !c.disponible)
+      .map((c) => ({
       path: `/${c.slug}`,
       name: c.slug,
       component: EnConstruction,
