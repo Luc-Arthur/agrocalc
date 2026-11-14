@@ -1,0 +1,10 @@
+<template>
+  <RouterLink to="/" class="flex items-center gap-2.5" aria-label="AgroCalc, accueil">
+    <svg viewBox="0 0 32 32" class="size-8" aria-hidden="true">
+      <rect width="32" height="32" rx="7" fill="#1F4D3A" />
+      <path d="M16 26V12" stroke="#E9B949" stroke-width="2.4" stroke-linecap="round" />
+      <path d="M16 17c-4.5 0-7-2.6-7-7 4.5 0 7 2.6 7 7Zm0-3c4.5 0 7-2.6 7-7-4.5 0-7 2.6-7 7Z" fill="#E9B949" />
+    </svg>
+    <span class="font-display text-xl font-extrabold tracking-tight [font-stretch:115%]">AgroCalc</span>
+  </RouterLink>
+</template>

@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* Palette « carnet de terrain » : vert culture, terre, blé */
+@theme {
+  --color-field: #1f4d3a;
+  --color-field-dark: #163a2b;
+  --color-leaf: #5e8c31;
+  --color-wheat: #e9b949;
+  --color-soil: #2b2118;
+  --color-ground: #eef1ea;
+  --color-line: #d5dccd;
+  --color-muted: #5b6658;
+
+  --font-display: "Archivo", "Arial Narrow", sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  background: var(--color-ground);
+  color: var(--color-soil);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Quadrillage léger, comme une feuille de carnet de terrain */
+.grid-paper {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
