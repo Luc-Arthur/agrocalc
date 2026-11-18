@@ -35,7 +35,7 @@ export const calculateurs: Calculateur[] = [
     description: "kg d'engrais commercial par hectare, ex. 04-14-08",
     unite: 'kg/ha',
     formule: 'kg/ha = besoin (kg/ha) × 100 ÷ teneur (%)',
-    disponible: false,
+    disponible: true,
   },
   {
     slug: 'conversions',

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-// Champ numérique du carnet : grande valeur à droite, unité affichée, message d'erreur dessous
-defineProps<{ id: string; label: string; unite: string; aide?: string; indication?: string; erreur?: string }>()
+// Champ numérique du carnet : grande valeur à droite, unité affichée, message d'erreur dessous.
+// clavier="text" pour une saisie avec des tirets (formule 04-14-08), absents du pavé décimal iOS.
+defineProps<{ id: string; label: string; unite: string; aide?: string; indication?: string; erreur?: string; clavier?: 'decimal' | 'text' }>()
 const valeur = defineModel<string>({ required: true })
 </script>
 
@@ -18,7 +19,7 @@ const valeur = defineModel<string>({ required: true })
         :id="id"
         v-model="valeur"
         type="text"
-        inputmode="decimal"
+        :inputmode="clavier ?? 'decimal'"
         autocomplete="off"
         class="mono h-full min-w-0 flex-1 bg-transparent pl-4 pr-3 text-right text-[26px] font-medium outline-none"
         :aria-invalid="erreur ? 'true' : undefined"
