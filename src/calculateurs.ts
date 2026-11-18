@@ -26,7 +26,7 @@ export const calculateurs: Calculateur[] = [
     description: 't de calcaire par hectare · saturation par bases',
     unite: 't/ha',
     formule: 'NC = (V₂ − V₁) × CTC ÷ PRNT',
-    disponible: false,
+    disponible: true,
   },
   {
     slug: 'fumure',

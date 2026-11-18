@@ -14,3 +14,8 @@ export function formater(valeur: number, decimales = 0, locale = 'fr-FR'): strin
     maximumFractionDigits: decimales,
   }).format(valeur)
 }
+
+/** Comme formater, mais sans zéros inutiles : 3,75 · 10 · 0,5 */
+export function formaterCourt(valeur: number, decimalesMax = 2, locale = 'fr-FR'): string {
+  return new Intl.NumberFormat(locale, { maximumFractionDigits: decimalesMax }).format(valeur)
+}

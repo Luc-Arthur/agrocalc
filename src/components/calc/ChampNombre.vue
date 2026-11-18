@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Champ numérique du carnet : grande valeur à droite, unité affichée, message d'erreur dessous
-defineProps<{ id: string; label: string; unite: string; aide?: string; erreur?: string }>()
+defineProps<{ id: string; label: string; unite: string; aide?: string; indication?: string; erreur?: string }>()
 const valeur = defineModel<string>({ required: true })
 </script>
 
@@ -22,10 +22,11 @@ const valeur = defineModel<string>({ required: true })
         autocomplete="off"
         class="mono h-full min-w-0 flex-1 bg-transparent pl-4 pr-3 text-right text-[26px] font-medium outline-none"
         :aria-invalid="erreur ? 'true' : undefined"
-        :aria-describedby="erreur ? `${id}-erreur` : undefined"
+        :aria-describedby="erreur ? `${id}-erreur` : indication ? `${id}-indication` : undefined"
       />
       <span class="mono min-w-24 flex-none pr-4 text-[15px] font-medium text-ink-2">{{ unite }}</span>
     </div>
     <p v-if="erreur" :id="`${id}-erreur`" class="mt-1.5 text-sm font-bold text-danger">{{ erreur }}</p>
+    <p v-else-if="indication" :id="`${id}-indication`" class="mt-1.5 text-sm leading-5 text-ink-2">{{ indication }}</p>
   </div>
 </template>
