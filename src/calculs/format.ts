@@ -20,6 +20,13 @@ export function formaterCourt(valeur: number, decimalesMax = 2, locale = 'fr-FR'
   return new Intl.NumberFormat(locale, { maximumFractionDigits: decimalesMax }).format(valeur)
 }
 
+/** Durée lisible à partir d'heures décimales : 0,69 → « 41 min » ; 2,07 → « 2 h 04 » */
+export function formaterDuree(heures: number): string {
+  const minutes = Math.round(heures * 60)
+  if (minutes < 60) return `${minutes} min`
+  return `${Math.floor(minutes / 60)} h ${String(minutes % 60).padStart(2, '0')}`
+}
+
 /** Décimales adaptées à la grandeur, pour les conversions : 24 200 · 242,5 · 2,42 · 0,0413 */
 export function formaterAuto(valeur: number, locale = 'fr-FR'): string {
   const a = Math.abs(valeur)

@@ -38,9 +38,9 @@ const etapes = [
       </li>
     </ul>
 
-    <!-- Desktop : quatre cartes, avec la formule de chacune -->
+    <!-- Desktop : une carte par calculateur, avec sa formule ; la dernière s'étale si leur nombre est impair -->
     <div class="hidden grid-cols-2 gap-0.5 border-2 border-ink bg-ink lg:grid">
-      <RouterLink v-for="c in calculateurs" :key="c.slug" :to="`/${c.slug}`" class="flex min-h-[236px] flex-col gap-2.5 bg-paper p-6 hover:bg-paper-2">
+      <RouterLink v-for="c in calculateurs" :key="c.slug" :to="`/${c.slug}`" class="flex min-h-[236px] flex-col gap-2.5 bg-paper p-6 odd:last:col-span-2 hover:bg-paper-2">
         <span class="flex items-center justify-between">
           <span class="idx">{{ c.index }}</span>
           <span class="unit-chip">{{ c.unite }}</span>

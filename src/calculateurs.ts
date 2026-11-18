@@ -46,4 +46,13 @@ export const calculateurs: Calculateur[] = [
     formule: '1 ha = 10 000 m² · 1 alq. SP = 2,42 ha · 1 sc = 60 kg',
     disponible: true,
   },
+  {
+    slug: 'irrigation',
+    index: '05',
+    titre: 'Irrigation',
+    description: "besoin en eau (mm/jour) et temps d'arrosage",
+    unite: 'mm · h',
+    formule: 'ETc = ET₀ × Kc · durée = lame ÷ intensité',
+    disponible: true,
+  },
 ]

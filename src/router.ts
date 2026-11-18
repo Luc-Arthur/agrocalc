@@ -5,6 +5,7 @@ import Semis from './views/Semis.vue'
 import Chaulage from './views/Chaulage.vue'
 import Fumure from './views/Fumure.vue'
 import Conversions from './views/Conversions.vue'
+import Irrigation from './views/Irrigation.vue'
 import { calculateurs } from './calculateurs'
 
 // Historique « hash » (#/semis) : compatible avec GitHub Pages, sans configuration serveur
@@ -16,6 +17,7 @@ export const router = createRouter({
     { path: '/chaulage', name: 'chaulage', component: Chaulage },
     { path: '/fumure', name: 'fumure', component: Fumure },
     { path: '/conversions', name: 'conversions', component: Conversions },
+    { path: '/irrigation', name: 'irrigation', component: Irrigation },
     ...calculateurs
       .filter((c) => !c.disponible)
       .map((c) => ({

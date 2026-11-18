@@ -1,6 +1,6 @@
 # 🌱 AgroCalc
 
-Calculateurs agronomiques en ligne : **semis, chaulage, fumure NPK et conversions d'unités**. On entre ses valeurs, le résultat s'affiche tout de suite, avec la formule utilisée.
+Calculateurs agronomiques en ligne : **semis, chaulage, fumure NPK, conversions d'unités et irrigation**. On entre ses valeurs, le résultat s'affiche tout de suite, avec la formule utilisée.
 
 🔗 **Démo :** [luc-arthur.github.io/agrocalc](https://luc-arthur.github.io/agrocalc/)
 
@@ -15,7 +15,7 @@ Calculateurs agronomiques en ligne : **semis, chaulage, fumure NPK et conversion
 - [x] Chaulage : t de calcaire par hectare (saturation par bases), jauge de saturation
 - [x] Fumure NPK : kg d'engrais commercial par hectare, compléments en engrais simples, bilan par nutriment
 - [x] Conversions : hectare, m², alqueire, acre, sacs par hectare, surfaces dessinées à l'échelle
-- [ ] Irrigation : besoin en eau (mm/jour) et temps d'arrosage — idée proposée en commentaire LinkedIn
+- [x] Irrigation : besoin en eau (mm/jour) et temps d'arrosage — idée proposée en commentaire LinkedIn
 - [ ] Interface en français et en portugais
 - [ ] Tests des formules et version 1.0
 
