@@ -41,9 +41,9 @@ export const calculateurs: Calculateur[] = [
     slug: 'conversions',
     index: '04',
     titre: 'Conversions',
-    description: 'hectare, m², alqueire, sacs par hectare',
+    description: 'hectare, m², alqueire, acre, sacs par hectare',
     unite: 'ha ⇄ m²',
-    formule: '1 ha = 10 000 m² · 1 sc = 60 kg',
-    disponible: false,
+    formule: '1 ha = 10 000 m² · 1 alq. SP = 2,42 ha · 1 sc = 60 kg',
+    disponible: true,
   },
 ]

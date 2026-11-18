@@ -14,7 +14,7 @@ Calculateurs agronomiques en ligne : **semis, chaulage, fumure NPK et conversion
 - [x] Semis : kg de semences par hectare, graines par mètre de rang
 - [x] Chaulage : t de calcaire par hectare (saturation par bases), jauge de saturation
 - [x] Fumure NPK : kg d'engrais commercial par hectare, compléments en engrais simples, bilan par nutriment
-- [ ] Conversions : hectare, m², alqueire, sacs par hectare
+- [x] Conversions : hectare, m², alqueire, acre, sacs par hectare, surfaces dessinées à l'échelle
 - [ ] Irrigation : besoin en eau (mm/jour) et temps d'arrosage — idée proposée en commentaire LinkedIn
 - [ ] Interface en français et en portugais
 - [ ] Tests des formules et version 1.0
